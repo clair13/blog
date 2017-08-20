@@ -2,9 +2,30 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 
 class PostsNew extends Component {
-  render() {
+  renderField(field) {
     return (
-      <form>
+      <div className="form-group">
+        <label>{field.label}</label>
+        <input
+          className="form-control"
+          type="text"
+          {...field.input}
+          />
+          {field.meta.error}
+      </div>
+    );
+  }
+
+  onSubmit(values) {
+    console.log(values);
+  }
+
+
+  render() {
+    const { handleSubmit } = this.props;
+
+    return (
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Create A New Post</h3>
         <div className="form-group">
           <label>Title</label>
@@ -29,10 +50,6 @@ class PostsNew extends Component {
 
 function validate(values) {
   const errors ={};
-
-  if (values.title.length < 3) {
-    errors.title = "Title must be at least 3 characters";
-  }
 
   if (!values.title){
     errors.title = "Enter a title";

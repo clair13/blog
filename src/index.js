@@ -22,5 +22,6 @@ ReactDOM.render(
         </Switch>
       </div>
     </BrowserRouter>
-  </Provider>
-  , document.querySelector('.container'));
+  </Provider>,
+   document.querySelector('.container')
+  );

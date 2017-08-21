@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { reduxForm } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createPost } from '../actions';
@@ -19,7 +19,7 @@ class PostsNew extends Component {
           {...field.input}
           />
         <div className="text-help">
-          {touched ? errors : ""}
+          {touched ? error : ""}
         </div>
       </div>
     );
@@ -59,9 +59,9 @@ class PostsNew extends Component {
 }
 
 function validate(values) {
-  const errors ={};
+  const errors = {};
 
-  if (!values.title){
+  if (!values.title) {
     errors.title = "Enter a title";
   }
 
